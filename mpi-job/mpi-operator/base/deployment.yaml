@@ -13,12 +13,12 @@ spec:
         app: mpi-operator
     spec:
       containers:
-      - args:
-        - --gpus-per-node
-        - "8"
-        - --kubectl-delivery-image
-        - $(kubectl-delivery-image)
-        image: mpioperator/mpi-operator:0.1.0
+      - args:[
+          "-alsologtostderr",
+          "--kubectl-delivery-image",
+          "mpioperator/kubectl-delivery:latest"
+        ]
+        image: mpioperator/mpi-operator:latest
         imagePullPolicy: Always
         name: mpi-operator
       serviceAccountName: mpi-operator
